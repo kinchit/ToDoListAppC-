@@ -1,0 +1,9 @@
+c:\users\omnitech\documents\visual studio 2015\Projects\ToDoListApplication\ToDoListApplication\bin\Debug\ToDoListApplication.exe.config
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\bin\Debug\ToDoListApplication.exe
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\bin\Debug\ToDoListApplication.pdb
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.Properties.Resources.resources
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.csproj.GenerateResource.Cache
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.exe
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.pdb
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.Form1.resources
+C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.csprojResolveAssemblyReference.cache
