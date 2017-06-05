@@ -39,14 +39,14 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.listTableAdapter = new ToDoListApplication.TodoListTableAdapters.listTableAdapter();
-            this.button6 = new System.Windows.Forms.Button();
             this.listIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.completedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.listTableAdapter = new ToDoListApplication.TodoListTableAdapters.listTableAdapter();
+            this.button6 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.listBindingSource1)).BeginInit();
@@ -72,7 +72,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Add Task";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.AddTask_click);
             // 
             // button3
             // 
@@ -142,7 +142,31 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(556, 200);
             this.dataGridView1.TabIndex = 10;
-            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            // 
+            // listIdDataGridViewTextBoxColumn
+            // 
+            this.listIdDataGridViewTextBoxColumn.DataPropertyName = "list_Id";
+            this.listIdDataGridViewTextBoxColumn.HeaderText = "list_Id";
+            this.listIdDataGridViewTextBoxColumn.Name = "listIdDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
+            // completedDataGridViewCheckBoxColumn
+            // 
+            this.completedDataGridViewCheckBoxColumn.DataPropertyName = "Completed";
+            this.completedDataGridViewCheckBoxColumn.HeaderText = "Completed";
+            this.completedDataGridViewCheckBoxColumn.Name = "completedDataGridViewCheckBoxColumn";
+            // 
+            // endDateDataGridViewTextBoxColumn
+            // 
+            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
+            this.endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
+            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
             // 
             // button4
             // 
@@ -178,30 +202,6 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // listIdDataGridViewTextBoxColumn
-            // 
-            this.listIdDataGridViewTextBoxColumn.DataPropertyName = "list_Id";
-            this.listIdDataGridViewTextBoxColumn.HeaderText = "list_Id";
-            this.listIdDataGridViewTextBoxColumn.Name = "listIdDataGridViewTextBoxColumn";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
-            // completedDataGridViewCheckBoxColumn
-            // 
-            this.completedDataGridViewCheckBoxColumn.DataPropertyName = "Completed";
-            this.completedDataGridViewCheckBoxColumn.HeaderText = "Completed";
-            this.completedDataGridViewCheckBoxColumn.Name = "completedDataGridViewCheckBoxColumn";
-            // 
-            // endDateDataGridViewTextBoxColumn
-            // 
-            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -218,6 +218,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 13;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // Form1
             // 

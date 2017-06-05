@@ -49,32 +49,18 @@ namespace ToDoListApplication
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void AddTask_click(object sender, EventArgs e)
         {
 
            try
             {
-                int temp = 1;
                 edit(true);
                 textBox1.Clear();
                 textBoxDescription.Clear();
                 textBox1.Text = todoList.list.list_IdColumn.DefaultValue.ToString();
-                //todoList.list.AddlistRow(todoList.list.NewlistRow());
-                //todoList.list.AddlistRow(todoList.list.NewlistRow());
                 listBindingSource1.MoveLast();
                 textBoxDescription.Focus();
-
-
-                //String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
-                //String query = "INSERT INTO list(list_id, description, completed, enddate) " +
-                //    "VALUES(1, 'Wakeup', '0', GetDate())";
-                //SqlConnection con = new SqlConnection(str);
-                //SqlCommand cmd = new SqlCommand(query, con);
-                //con.Open();
-                //cmd.ExecuteNonQuery();
-                //DataSet ds = new DataSet();
-                //MessageBox.Show("connect with sql server and table created");
-                //con.Close();
+                
             }
             catch (Exception es)
             {
@@ -97,22 +83,13 @@ namespace ToDoListApplication
         {
             try
             {
-                String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
-                String query = "DELETE FROM list" +
-                    " WHERE list_Id = '1';";
-                SqlConnection con = new SqlConnection(str);
-                SqlCommand cmd = new SqlCommand(query, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                DataSet ds = new DataSet();
-                //String q1 = "ALTER TABLE list" +
-                //    " ADD EndDate DATETIME NOT NULL DEFAULT (GETDATE());";
-                //MessageBox.Show("connect with sql server and table created");
-                //SqlConnection con = new SqlConnection(str);
-                //SqlCommand cmd = new SqlCommand(q1, con);
-                //con.Open();
-                //cmd.ExecuteNonQuery();
-                con.Close();
+                listBindingSource1.RemoveCurrent();
+                listBindingSource1.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+                listTableAdapter.Fill(todoList.list);
+                todoList.list.AcceptChanges();
+                dataGridView1.Refresh();
+                textBoxDescription.Focus();
+                MessageBox.Show("Data has been successfully deleted.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);    
             }
             catch (Exception es)
             {
@@ -121,9 +98,7 @@ namespace ToDoListApplication
             }
         }
 
-        //ALTER TABLE yourTable 
-        //ADD COLUMN new_date DATETIME NOT NULL DEFAULT 20110126143000 AFTER preceding_col
-
+        
         private void edit(bool value)
         {
             textBox1.Enabled = value;
@@ -160,21 +135,8 @@ namespace ToDoListApplication
                 DateTime date = dateTimePicker1.Value;
                 listTableAdapter.Insert(id, input_desc, false, date);
 
-                //String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
-                //String query = "INSERT INTO list(list_id, description, completed) " +
-                //    "VALUES(id, des, '0')";
-                //SqlConnection con = new SqlConnection(str);
-                //SqlCommand cmd = new SqlCommand(query, con);
-                //con.Open();
-                //cmd.ExecuteNonQuery();
-                //DataSet ds = new DataSet();
-                //MessageBox.Show("connect with sql server and table created");
-                //con.Close();
-
-
                 edit(false);
                 listBindingSource1.EndEdit();
-                //listTableAdapter.Update(todoList.list);
                 listTableAdapter.Fill(todoList.list);
                 dataGridView1.Refresh();
                 textBoxDescription.Focus();
@@ -188,15 +150,24 @@ namespace ToDoListApplication
             }
         }
 
-        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+       private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyChar == (char)13) //Enter
+            if(e.KeyCode == Keys.Delete)
             {
-                if(MessageBox.Show("Are you sure you want to delete this record?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this record?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    DataRowView drv = (DataRowView)listBindingSource1.Current;
+                    TodoList.listRow row = (TodoList.listRow)drv.Row;
+                    listTableAdapter.Delete(row.list_Id, row.Description, row.Completed, row.EndDate);
                     listBindingSource1.RemoveCurrent();
                 }
             }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int isNumber = 0;
+            e.Handled = != int.Parse(e.KeyChar.ToString(), out isNumber);
         }
     }
 }
