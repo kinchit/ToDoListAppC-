@@ -27,9 +27,7 @@ namespace ToDoListApplication
         {
            try
             {
-                //String str = "server=WIN764-KINCHIT\\SQLEXPRESS;database=TodoList;UID=omnitech;password=0mn!Cell";
                 String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
-                //String str = "Data Source=(WIN764-KINCHIT\\SQLEXPRESS); " + "Database='TodoList';" + "UID=WIN764-KINCHIT\\omnitech;" + "PASSWORD=0mn!Cell;";
                 String query = "CREATE TABLE list(list_Id INT NOT NULL, " +
                     "Description VARCHAR(255) NOT NULL, " +
                     "Completed BIT NOT NULL DEFAULT '0', " +
@@ -60,6 +58,10 @@ namespace ToDoListApplication
                 textBox1.Text = todoList.list.list_IdColumn.DefaultValue.ToString();
                 listBindingSource1.MoveLast();
                 textBoxDescription.Focus();
+                if(textBoxDescription.TextLength > 254)
+                {
+                    MessageBox.Show("Max length of task description reached!!!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 
             }
             catch (Exception es)
@@ -70,7 +72,6 @@ namespace ToDoListApplication
 
 
         }
-
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -130,17 +131,20 @@ namespace ToDoListApplication
             {
                 string input_id = textBox1.Text;
                 int id = int.Parse(input_id);
-
+                
                 string input_desc = textBoxDescription.Text;
                 DateTime date = dateTimePicker1.Value;
-                listTableAdapter.Insert(id, input_desc, false, date);
 
-                edit(false);
+                if(!id_Check(id))
+                {
+                    listTableAdapter.Insert(id, input_desc, false, date);
+                    edit(false);
                 listBindingSource1.EndEdit();
                 listTableAdapter.Fill(todoList.list);
                 dataGridView1.Refresh();
                 textBoxDescription.Focus();
                 MessageBox.Show("Data has been successfully added.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 
             }
             catch (Exception es)
@@ -148,6 +152,29 @@ namespace ToDoListApplication
                 MessageBox.Show(es.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 todoList.list.RejectChanges();
             }
+        }
+
+        
+       public bool id_Check(int id)
+        {
+           String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
+           SqlConnection con = new SqlConnection(str);
+           SqlCommand cmd = new SqlCommand("Select count(*) from list where list_Id = @alias", con);
+           cmd.Parameters.AddWithValue("@alias", this.textBox1.Text);
+           con.Open();
+           int TotalRows = todoList.Tables[0].Rows.Count;
+           TotalRows = Convert.ToInt32(cmd.ExecuteScalar());
+                if (TotalRows > 0)
+                {
+                    MessageBox.Show("Id " + textBox1.Text + " Already exist");
+                    con.Close();
+                    return true;
+                }
+            else
+            {
+                con.Close();
+                return false;
+            }   
         }
 
        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
@@ -166,8 +193,28 @@ namespace ToDoListApplication
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int isNumber = 0;
-            e.Handled = != int.Parse(e.KeyChar.ToString(), out isNumber);
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxDescription_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (textBoxDescription.TextLength > 254)
+            {
+                MessageBox.Show("Max length of task description reached!!!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if(textBoxDescription.TextLength < 5)
+            {
+                MessageBox.Show("Min length of task description should be 5 char!!!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

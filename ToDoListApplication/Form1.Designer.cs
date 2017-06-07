@@ -116,9 +116,12 @@
             // 
             this.textBoxDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.todoList, "list.Description", true));
             this.textBoxDescription.Location = new System.Drawing.Point(102, 57);
+            this.textBoxDescription.MaxLength = 255;
+            this.textBoxDescription.MinimumSize = new System.Drawing.Size(0, 10);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(391, 20);
             this.textBoxDescription.TabIndex = 1;
+            this.textBoxDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDescription_KeyPress);
             // 
             // dateTimePicker1
             // 
