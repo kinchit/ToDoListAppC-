@@ -244,6 +244,7 @@
             this.Name = "Form1";
             this.Text = "ToDo List";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Leave += new System.EventHandler(this.Form1_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.listBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.todoList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

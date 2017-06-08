@@ -236,5 +236,10 @@ namespace ToDoListApplication
                 MessageBox.Show("Min length of task description should be 5 char!!!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void Form1_Leave(object sender, EventArgs e)
+        {
+            Log.CloseAndFlush();
+        }
     }
 }
