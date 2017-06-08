@@ -117,6 +117,9 @@ namespace ToDoListApplication
         {
             edit(true);
             textBoxDescription.Focus();
+            string input_desc = textBoxDescription.Text;
+            DateTime date = dateTimePicker1.Value;
+            Log.Information("List Description and Date Updated");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -132,6 +135,7 @@ namespace ToDoListApplication
             // insert
 
             // display
+            
 
             try
             {
@@ -149,10 +153,10 @@ namespace ToDoListApplication
                     listTableAdapter.Insert(id, input_desc, false, date);
                     Log.Information("Task inserted in DB");
                     edit(false);
-                listBindingSource1.EndEdit();
-                listTableAdapter.Fill(todoList.list);
-                dataGridView1.Refresh();
-                textBoxDescription.Focus();
+                    listBindingSource1.EndEdit();
+                    listTableAdapter.Fill(todoList.list);
+                    dataGridView1.Refresh();
+                    textBoxDescription.Focus();
                     Log.Information("Task seen in UI");
                     Log.Information("*************************");
                     MessageBox.Show("Data has been successfully added.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
