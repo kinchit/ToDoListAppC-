@@ -1,4 +1,5 @@
 ﻿using System;
+using Serilog;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ToDoListApplication
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.

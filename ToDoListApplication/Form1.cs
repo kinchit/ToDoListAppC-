@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ namespace ToDoListApplication
         public Form1()
         {
             InitializeComponent();
+            //Log.Logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger();
+            Log.Logger = new LoggerConfiguration().WriteTo.RollingFile("todolist-{Date}.txt").CreateLogger();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,21 +55,19 @@ namespace ToDoListApplication
 
            try
             {
+                Log.Information("Add Task clicked.");
                 edit(true);
                 textBox1.Clear();
                 textBoxDescription.Clear();
                 textBox1.Text = todoList.list.list_IdColumn.DefaultValue.ToString();
                 listBindingSource1.MoveLast();
                 textBoxDescription.Focus();
-                if(textBoxDescription.TextLength > 254)
-                {
-                    MessageBox.Show("Max length of task description reached!!!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                
+                Log.Information("Add Task clicked - Id and Description field enabled for adding tasks.");
             }
             catch (Exception es)
             {
                 MessageBox.Show(es.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Information("Error in Add task - {0}", es.Message);
 
             }
 
@@ -78,16 +79,20 @@ namespace ToDoListApplication
         {
             this.listTableAdapter.Fill(this.todoList.list);
             edit(false);
+            Log.Information("Form Loaded to add tasks.");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             try
             {
+                Log.Information("Delete Button Clicked.");
                 listBindingSource1.RemoveCurrent();
                 listBindingSource1.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+                Log.Information("Current selected item deleted.");
                 listTableAdapter.Fill(todoList.list);
                 todoList.list.AcceptChanges();
+                Log.Information("Current selected deleted from db and view updated.");
                 dataGridView1.Refresh();
                 textBoxDescription.Focus();
                 MessageBox.Show("Data has been successfully deleted.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);    
@@ -95,7 +100,7 @@ namespace ToDoListApplication
             catch (Exception es)
             {
                 MessageBox.Show(es.Message);
-
+                Log.Error("Error in Delete task - {0}", es.Message);
             }
         }
 
@@ -105,6 +110,7 @@ namespace ToDoListApplication
             textBox1.Enabled = value;
             textBoxDescription.Enabled = value;
             dateTimePicker1.Enabled = value;
+            Log.Information("Field enabled for editing.");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -131,19 +137,25 @@ namespace ToDoListApplication
             {
                 string input_id = textBox1.Text;
                 int id = int.Parse(input_id);
-                
+                Log.Information("List Id input done");
+
                 string input_desc = textBoxDescription.Text;
                 DateTime date = dateTimePicker1.Value;
+                Log.Information("List Description and Date entered");
 
-                if(!id_Check(id))
+                if (!id_Check(id))
                 {
+                    Log.Information("Id Verified for duplication");
                     listTableAdapter.Insert(id, input_desc, false, date);
+                    Log.Information("Task inserted in DB");
                     edit(false);
                 listBindingSource1.EndEdit();
                 listTableAdapter.Fill(todoList.list);
                 dataGridView1.Refresh();
                 textBoxDescription.Focus();
-                MessageBox.Show("Data has been successfully added.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Log.Information("Task seen in UI");
+                    Log.Information("*************************");
+                    MessageBox.Show("Data has been successfully added.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 
             }
@@ -151,6 +163,7 @@ namespace ToDoListApplication
             {
                 MessageBox.Show(es.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 todoList.list.RejectChanges();
+                Log.Warning("Error saving task - Changes rejected.");
             }
         }
 
@@ -158,23 +171,26 @@ namespace ToDoListApplication
        public bool id_Check(int id)
         {
            String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
-           SqlConnection con = new SqlConnection(str);
-           SqlCommand cmd = new SqlCommand("Select count(*) from list where list_Id = @alias", con);
-           cmd.Parameters.AddWithValue("@alias", this.textBox1.Text);
-           con.Open();
-           int TotalRows = todoList.Tables[0].Rows.Count;
-           TotalRows = Convert.ToInt32(cmd.ExecuteScalar());
+           using (SqlConnection con = new SqlConnection(str))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Select count(*) from list where list_Id = @alias", con);
+                cmd.Parameters.AddWithValue("@alias", this.textBox1.Text);
+
+                int TotalRows = todoList.Tables[0].Rows.Count;
+                TotalRows = Convert.ToInt32(cmd.ExecuteScalar());
                 if (TotalRows > 0)
                 {
                     MessageBox.Show("Id " + textBox1.Text + " Already exist");
-                    con.Close();
+                    //con.Close();
                     return true;
                 }
-            else
-            {
-                con.Close();
-                return false;
-            }   
+                else
+                {
+                    //con.Close();
+                    return false;
+                }
+            }
         }
 
        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
@@ -211,7 +227,7 @@ namespace ToDoListApplication
             {
                 MessageBox.Show("Max length of task description reached!!!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if(textBoxDescription.TextLength < 5)
+            else if(textBoxDescription.TextLength < 0)
             {
                 MessageBox.Show("Min length of task description should be 5 char!!!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
