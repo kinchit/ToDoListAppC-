@@ -50,7 +50,7 @@ namespace ToDoListApplication
             }
         }
 
-        private void AddTask_click(object sender, EventArgs e)
+        public void AddTask_click(object sender, EventArgs e)
         {
 
            try
@@ -86,16 +86,28 @@ namespace ToDoListApplication
         {
             try
             {
-                Log.Information("Delete Button Clicked.");
-                listBindingSource1.RemoveCurrent();
-                listBindingSource1.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
-                Log.Information("Current selected item deleted.");
+                string input_id = textBox1.Text;
+                int id = int.Parse(input_id);
+                Log.Information("List Id input done");
+
+                string input_desc = textBoxDescription.Text;
+                DateTime date = dateTimePicker1.Value;
+                Log.Information("List Description and Date entered");
+
+                TodoList.listRow rows = todoList.list.FindBylist_Id(id);
+                rows.Description = input_desc;
+                rows.Completed = bool.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                Log.Information("Completed Check box checked/unchecked.");
+
+                //todoList.list.CompletedColumn.
+
+                this.listTableAdapter.Update(this.todoList.list);
+                Log.Information("Task inserted in DB");
+                edit(false);
+                listBindingSource1.EndEdit();
                 listTableAdapter.Fill(todoList.list);
-                todoList.list.AcceptChanges();
-                Log.Information("Current selected deleted from db and view updated.");
                 dataGridView1.Refresh();
-                textBoxDescription.Focus();
-                MessageBox.Show("Data has been successfully deleted.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);    
+                Log.Information("Task seen in UI");
             }
             catch (Exception es)
             {
@@ -170,7 +182,6 @@ namespace ToDoListApplication
                 Log.Warning("Error saving task - Changes rejected.");
             }
         }
-
         
        public bool id_Check(int id)
         {
@@ -199,14 +210,17 @@ namespace ToDoListApplication
 
        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
+            // Delete the selected record
             if(e.KeyCode == Keys.Delete)
             {
                 if (MessageBox.Show("Are you sure you want to delete this record?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    Log.Information("Current selected item deleted.");
                     DataRowView drv = (DataRowView)listBindingSource1.Current;
                     TodoList.listRow row = (TodoList.listRow)drv.Row;
                     listTableAdapter.Delete(row.list_Id, row.Description, row.Completed, row.EndDate);
                     listBindingSource1.RemoveCurrent();
+                    Log.Information("Current selected deleted from db and view updated.");
                 }
             }
         }

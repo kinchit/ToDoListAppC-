@@ -12,3 +12,52 @@
 2017-06-08 10:41:36.050 -07:00 [Information] Field enabled for editing.
 2017-06-08 10:41:36.084 -07:00 [Information] Task seen in UI
 2017-06-08 10:41:36.084 -07:00 [Information] *************************
+2017-06-08 11:31:46.032 -07:00 [Information] Field enabled for editing.
+2017-06-08 11:31:46.061 -07:00 [Information] Form Loaded to add tasks.
+2017-06-08 11:31:52.061 -07:00 [Information] Field enabled for editing.
+2017-06-08 11:31:52.062 -07:00 [Information] List Description and Date Updated
+2017-06-08 11:31:57.881 -07:00 [Information] Field enabled for editing.
+2017-06-08 11:32:00.662 -07:00 [Information] Field enabled for editing.
+2017-06-08 11:32:00.663 -07:00 [Information] List Description and Date Updated
+2017-06-08 11:32:02.224 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:30:16.251 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:30:16.277 -07:00 [Information] Form Loaded to add tasks.
+2017-06-08 12:30:19.168 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:30:19.169 -07:00 [Information] List Description and Date Updated
+2017-06-08 12:30:32.403 -07:00 [Information] List Id input done
+2017-06-08 12:30:38.496 -07:00 [Information] List Description and Date entered
+2017-06-08 12:30:57.784 -07:00 [Information] Id Verified for Existance.
+2017-06-08 12:31:18.685 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:31:21.428 -07:00 [Information] Add Task clicked.
+2017-06-08 12:31:21.429 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:31:21.432 -07:00 [Information] Add Task clicked - Id and Description field enabled for adding tasks.
+2017-06-08 12:31:24.223 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:32:23.110 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:32:23.137 -07:00 [Information] Form Loaded to add tasks.
+2017-06-08 12:32:26.109 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:32:26.110 -07:00 [Information] List Description and Date Updated
+2017-06-08 12:32:31.953 -07:00 [Information] List Id input done
+2017-06-08 12:32:33.365 -07:00 [Information] List Description and Date entered
+2017-06-08 12:32:37.791 -07:00 [Information] Id Verified for Existance.
+2017-06-08 12:32:43.768 -07:00 [Information] Task inserted in DB
+2017-06-08 12:32:44.999 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:33:01.315 -07:00 [Information] Task seen in UI
+2017-06-08 12:33:02.102 -07:00 [Information] *************************
+2017-06-08 12:42:14.507 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:42:14.535 -07:00 [Information] Form Loaded to add tasks.
+2017-06-08 12:42:19.178 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:42:19.179 -07:00 [Information] List Description and Date Updated
+2017-06-08 12:42:27.876 -07:00 [Information] List Id input done
+2017-06-08 12:42:27.876 -07:00 [Information] List Description and Date entered
+2017-06-08 12:42:27.902 -07:00 [Information] Task inserted in DB
+2017-06-08 12:42:27.903 -07:00 [Information] Field enabled for editing.
+2017-06-08 12:42:27.932 -07:00 [Information] Task seen in UI
+2017-06-08 16:03:33.262 -07:00 [Information] Field enabled for editing.
+2017-06-08 16:03:33.290 -07:00 [Information] Form Loaded to add tasks.
+2017-06-08 16:03:42.622 -07:00 [Information] Field enabled for editing.
+2017-06-08 16:03:42.623 -07:00 [Information] List Description and Date Updated
+2017-06-08 16:03:45.364 -07:00 [Information] List Id input done
+2017-06-08 16:03:45.364 -07:00 [Information] List Description and Date entered
+2017-06-08 16:03:45.405 -07:00 [Information] Task inserted in DB
+2017-06-08 16:03:45.406 -07:00 [Information] Field enabled for editing.
+2017-06-08 16:03:45.439 -07:00 [Information] Task seen in UI

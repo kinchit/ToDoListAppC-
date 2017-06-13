@@ -1,0 +1,22 @@
+2017-06-09 21:04:20.302 -07:00 [Information] Field enabled for editing.
+2017-06-09 21:04:20.335 -07:00 [Information] Form Loaded to add tasks.
+2017-06-09 21:04:25.786 -07:00 [Information] Add Task clicked.
+2017-06-09 21:04:25.787 -07:00 [Information] Field enabled for editing.
+2017-06-09 21:04:25.790 -07:00 [Information] Add Task clicked - Id and Description field enabled for adding tasks.
+2017-06-09 21:04:30.253 -07:00 [Information] List Id input done
+2017-06-09 21:04:30.253 -07:00 [Information] List Description and Date entered
+2017-06-09 21:04:35.676 -07:00 [Information] List Id input done
+2017-06-09 21:04:35.676 -07:00 [Information] List Description and Date entered
+2017-06-09 21:04:35.685 -07:00 [Information] Id Verified for duplication
+2017-06-09 21:04:35.699 -07:00 [Information] Task inserted in DB
+2017-06-09 21:04:35.701 -07:00 [Information] Field enabled for editing.
+2017-06-09 21:04:35.730 -07:00 [Information] Task seen in UI
+2017-06-09 21:04:35.730 -07:00 [Information] *************************
+2017-06-09 21:04:43.765 -07:00 [Information] Current selected item deleted.
+2017-06-09 21:04:43.808 -07:00 [Information] Current selected deleted from db and view updated.
+2017-06-09 21:04:45.726 -07:00 [Information] Field enabled for editing.
+2017-06-09 21:04:45.727 -07:00 [Information] List Description and Date Updated
+2017-06-09 21:04:47.777 -07:00 [Information] List Id input done
+2017-06-09 21:04:47.777 -07:00 [Information] List Description and Date entered
+2017-06-09 21:04:47.778 -07:00 [Information] Completed Check box checked/unchecked.
+2017-06-09 21:04:49.763 -07:00 [Error] Error in Delete task - "Concurrency violation: the DeleteCommand affected 0 of the expected 1 records."

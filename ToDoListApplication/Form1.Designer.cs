@@ -78,9 +78,9 @@
             // 
             this.button3.Location = new System.Drawing.Point(117, 367);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(119, 23);
             this.button3.TabIndex = 4;
-            this.button3.Text = "Delete Task";
+            this.button3.Text = "Save Updated Task";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -173,7 +173,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(212, 367);
+            this.button4.Location = new System.Drawing.Point(259, 367);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(105, 23);
             this.button4.TabIndex = 5;
@@ -183,7 +183,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(335, 367);
+            this.button5.Location = new System.Drawing.Point(381, 367);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 6;
@@ -197,7 +197,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(417, 366);
+            this.button6.Location = new System.Drawing.Point(462, 367);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 7;
