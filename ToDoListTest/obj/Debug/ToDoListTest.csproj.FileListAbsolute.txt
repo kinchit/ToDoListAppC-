@@ -1,0 +1,15 @@
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\obj\Debug\ToDoListTest.csprojResolveAssemblyReference.cache
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\ToDoListTest.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\ToDoListTest.pdb
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\ToDoListApplication.exe
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Serilog.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Serilog.Sinks.RollingFile.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Serilog.Sinks.File.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\ToDoListApplication.pdb
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Serilog.xml
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Serilog.Sinks.RollingFile.xml
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\bin\Debug\Serilog.Sinks.File.xml
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\obj\Debug\ToDoListTest.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListTest\obj\Debug\ToDoListTest.pdb

@@ -20,8 +20,7 @@ namespace ToDoListApplication
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            //DBConnection db = new DBConnection();
-            
+            //DBConnection db = new DBConnection();    
         }
 
         

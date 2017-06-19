@@ -1,66 +1,66 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace ToDoListApplication
 {
     public partial class Form1 : Form
     {
+        AddingNewTask adt = new AddingNewTask();
+        UpdatingTask ut = new UpdatingTask();
+
         public Form1()
         {
             InitializeComponent();
             //Log.Logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger();
-            Log.Logger = new LoggerConfiguration().WriteTo.RollingFile("todolist-{Date}.txt").CreateLogger();
+            Log.Logger = new LoggerConfiguration().WriteTo.RollingFile("todolist-{Date}.txt").CreateLogger();    
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            createTable();
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    createTable();
+        //}
 
         public void createTable()
         {
-           try
-            {
-                String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
-                String query = "CREATE TABLE list(list_Id INT NOT NULL, " +
-                    "Description VARCHAR(255) NOT NULL, " +
-                    "Completed BIT NOT NULL DEFAULT '0', " +
-                    "PRIMARY KEY (list_Id))";
-                SqlConnection con = new SqlConnection(str);
-                SqlCommand cmd = new SqlCommand(query, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                DataSet ds = new DataSet();
-                MessageBox.Show("connect with sql server and table created");
-                con.Close();
-            }
-            catch (Exception es)
-            {
-                MessageBox.Show(es.Message);
+            //try
+            //{
+            //    String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
+            //    String query = "CREATE TABLE list(list_Id INT NOT NULL, " +
+            //        "Description VARCHAR(255) NOT NULL, " +
+            //        "Completed BIT NOT NULL DEFAULT '0', " +
+            //        "PRIMARY KEY (list_Id))";
+            //    SqlConnection con = new SqlConnection(str);
+            //    SqlCommand cmd = new SqlCommand(query, con);
+            //    con.Open();
+            //    cmd.ExecuteNonQuery();
+            //    DataSet ds = new DataSet();
+            //    MessageBox.Show("connect with sql server and table created");
+            //    con.Close();
+            //}
+            //catch (Exception es)
+            //{
+            //    MessageBox.Show(es.Message);
 
-            }
+            //}
         }
 
+        // Add Task button when clicked ID and Description fields are blank and enabled for adding a task.
+        // Date filed is populated with current data/time.
         public void AddTask_click(object sender, EventArgs e)
         {
 
-           try
+            try
             {
                 Log.Information("Add Task clicked.");
                 edit(true);
                 textBox1.Clear();
                 textBoxDescription.Clear();
+                dateTimePicker1.Value = DateTime.Now;
                 textBox1.Text = todoList.list.list_IdColumn.DefaultValue.ToString();
-                listBindingSource1.MoveLast();
+                //listBindingSource1.MoveLast();
                 textBoxDescription.Focus();
                 Log.Information("Add Task clicked - Id and Description field enabled for adding tasks.");
             }
@@ -74,34 +74,38 @@ namespace ToDoListApplication
 
         }
 
-
+        // Default method for form load.
         private void Form1_Load(object sender, EventArgs e)
         {
             this.listTableAdapter.Fill(this.todoList.list);
             edit(false);
-            Log.Information("Form Loaded to add tasks.");
+            Log.Information("Form Loaded to add, review, update and delete tasks.");
         }
 
+        // Save Update Task button click
         private void button3_Click(object sender, EventArgs e)
         {
             try
             {
+                textBox1.Enabled = false;
                 string input_id = textBox1.Text;
                 int id = int.Parse(input_id);
-                Log.Information("List Id input done");
+                Log.Information("List Id not updated.");
 
                 string input_desc = textBoxDescription.Text;
-                DateTime date = dateTimePicker1.Value;
-                Log.Information("List Description and Date entered");
+                Log.Information("Task Description updated/verified");
+                DateTime date1 = dateTimePicker1.Value;
+                Log.Information("Task Date updated/verified");
+
 
                 TodoList.listRow rows = todoList.list.FindBylist_Id(id);
-                rows.Description = input_desc;
                 rows.Completed = bool.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-                Log.Information("Completed Check box checked/unchecked.");
+                Log.Information("Completed Check box checked/unchecked. - Unchecked by default");
 
-                //todoList.list.CompletedColumn.
+                //Update task method called in UpdateTask.cs
+                ut.updateData(id, input_desc, rows.Completed, date1);
 
-                this.listTableAdapter.Update(this.todoList.list);
+                //this.listTableAdapter.Update(this.todoList.list);
                 Log.Information("Task inserted in DB");
                 edit(false);
                 listBindingSource1.EndEdit();
@@ -116,7 +120,7 @@ namespace ToDoListApplication
             }
         }
 
-        
+        // Input field edit value - true/false
         private void edit(bool value)
         {
             textBox1.Enabled = value;
@@ -125,6 +129,7 @@ namespace ToDoListApplication
             Log.Information("Field enabled for editing.");
         }
 
+        // Update Task button click
         private void button4_Click(object sender, EventArgs e)
         {
             edit(true);
@@ -134,21 +139,20 @@ namespace ToDoListApplication
             Log.Information("List Description and Date Updated");
         }
 
+        //Click Cancel button
         private void button5_Click(object sender, EventArgs e)
         {
             edit(false);
+            int index = dataGridView1.CurrentRow.Index; // Get row index
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            textBox1.Text = selectedRow.Cells[0].Value.ToString();
+            textBoxDescription.Text = selectedRow.Cells[1].Value.ToString();
             listBindingSource1.ResetBindings(false);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        // Save New Task
+        public void button6_Click(object sender, EventArgs e)
         {
-            // validation
-
-            // insert
-
-            // display
-            
-
             try
             {
                 string input_id = textBox1.Text;
@@ -159,21 +163,29 @@ namespace ToDoListApplication
                 DateTime date = dateTimePicker1.Value;
                 Log.Information("List Description and Date entered");
 
-                if (!id_Check(id))
+                // Adding a method
+                if(adt.AddTask(id, input_desc, date))
                 {
-                    Log.Information("Id Verified for duplication");
-                    listTableAdapter.Insert(id, input_desc, false, date);
-                    Log.Information("Task inserted in DB");
                     edit(false);
                     listBindingSource1.EndEdit();
                     listTableAdapter.Fill(todoList.list);
                     dataGridView1.Refresh();
                     textBoxDescription.Focus();
-                    Log.Information("Task seen in UI");
+                    Log.Information("Task added and seen in UI");
                     Log.Information("*************************");
-                    MessageBox.Show("Data has been successfully added.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Task has been successfully added.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
+                else
+                {
+                    edit(false);
+                    listBindingSource1.EndEdit();
+                    listTableAdapter.Fill(todoList.list);
+                    dataGridView1.Refresh();
+                    textBoxDescription.Focus();
+                    Log.Information("Task not added and not seen in UI");
+                    Log.Information("*************************");
+                    MessageBox.Show("Task not added as ID already exisiting. ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }                
             }
             catch (Exception es)
             {
@@ -183,31 +195,7 @@ namespace ToDoListApplication
             }
         }
         
-       public bool id_Check(int id)
-        {
-           String str = "Data Source=Phoenix;Initial Catalog=TodoList;Integrated Security=True";
-           using (SqlConnection con = new SqlConnection(str))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("Select count(*) from list where list_Id = @alias", con);
-                cmd.Parameters.AddWithValue("@alias", this.textBox1.Text);
-
-                int TotalRows = todoList.Tables[0].Rows.Count;
-                TotalRows = Convert.ToInt32(cmd.ExecuteScalar());
-                if (TotalRows > 0)
-                {
-                    MessageBox.Show("Id " + textBox1.Text + " Already exist");
-                    //con.Close();
-                    return true;
-                }
-                else
-                {
-                    //con.Close();
-                    return false;
-                }
-            }
-        }
-
+       //key down event to delete the selected row. 
        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
             // Delete the selected record
@@ -225,6 +213,8 @@ namespace ToDoListApplication
             }
         }
 
+        // Key Press event for task Id
+        // Validating key character input for characters and special characters
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -239,6 +229,8 @@ namespace ToDoListApplication
             }
         }
 
+        // Key Press event for description
+        // Validating the length of the description to be less the 255 characters
         private void textBoxDescription_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (textBoxDescription.TextLength > 254)
@@ -254,6 +246,15 @@ namespace ToDoListApplication
         private void Form1_Leave(object sender, EventArgs e)
         {
             Log.CloseAndFlush();
+        }
+
+        //Selecting Cells in DataGrid
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex; // Get row index
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            textBox1.Text = selectedRow.Cells[0].Value.ToString();
+            textBoxDescription.Text = selectedRow.Cells[1].Value.ToString();
         }
     }
 }

@@ -7,20 +7,21 @@ C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDo
 C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.pdb
 C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.Form1.resources
 C:\Users\omnitech\Documents\Visual Studio 2015\Projects\ToDoListApplication\ToDoListApplication\obj\Debug\ToDoListApplication.csprojResolveAssemblyReference.cache
-C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\ToDoListApplication.exe.config
-C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.exe
-C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.pdb
-C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.csprojResolveAssemblyReference.cache
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.Form1.resources
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.Properties.Resources.resources
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.csproj.GenerateResource.Cache
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\ToDoListApplication.exe.config
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\ToDoListApplication.exe
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\ToDoListApplication.pdb
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.dll
-C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.Literate.dll
-C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.xml
-C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.Literate.xml
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Settings.AppSettings.dll
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.File.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.Literate.dll
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.RollingFile.dll
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.xml
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.File.xml
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.Literate.xml
 C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\bin\Debug\Serilog.Sinks.RollingFile.xml
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.csprojResolveAssemblyReference.cache
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.exe
+C:\Users\omnitech\ToDoListAppC-\ToDoListApplication\obj\Debug\ToDoListApplication.pdb
