@@ -22,3 +22,25 @@
 2017-06-19 12:51:12.610 -07:00 [Information] Field enabled for editing.
 2017-06-19 12:51:12.610 -07:00 [Information] List Description and Date Updated
 2017-06-19 12:51:16.214 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:49:34.619 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:49:34.640 -07:00 [Information] Form Loaded to add, review, update and delete tasks.
+2017-06-19 15:49:39.841 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:49:39.841 -07:00 [Information] List Description and Date Updated
+2017-06-19 15:49:49.778 -07:00 [Information] List Id not updated.
+2017-06-19 15:49:49.778 -07:00 [Information] Task Description updated/verified
+2017-06-19 15:49:49.778 -07:00 [Information] Task Date updated/verified
+2017-06-19 15:49:49.778 -07:00 [Information] Completed Check box checked/unchecked. - Unchecked by default
+2017-06-19 15:49:49.778 -07:00 [Information] connect with sql server.
+2017-06-19 15:49:49.778 -07:00 [Information] Executing update query
+2017-06-19 15:49:49.794 -07:00 [Information] Task updated in to the database.
+2017-06-19 15:49:49.794 -07:00 [Information] Task inserted in DB
+2017-06-19 15:49:49.794 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:49:49.825 -07:00 [Information] Task seen in UI
+2017-06-19 15:55:27.473 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:55:27.505 -07:00 [Information] Form Loaded to add, review, update and delete tasks.
+2017-06-19 15:55:29.409 -07:00 [Information] Add Task clicked.
+2017-06-19 15:55:29.409 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:55:29.409 -07:00 [Information] Add Task clicked - Id and Description field enabled for adding tasks.
+2017-06-19 15:55:31.406 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:56:00.453 -07:00 [Information] Field enabled for editing.
+2017-06-19 15:56:00.475 -07:00 [Information] Form Loaded to add, review, update and delete tasks.

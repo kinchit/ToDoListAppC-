@@ -243,6 +243,7 @@ namespace ToDoListApplication
             }
         }
 
+        //Form close 
         private void Form1_Leave(object sender, EventArgs e)
         {
             Log.CloseAndFlush();
